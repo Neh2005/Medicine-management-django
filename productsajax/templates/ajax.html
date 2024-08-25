@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script>
+$(document).ready(function(){
+          getProductList()
+        }); 
+        function getProductList(){
+          $.ajax({
+            url: "{% url 'list_products' %}",
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+            var productList = $('#product-table');
+            productList.empty();
+            var thead='<tr><th>Name</th><th>Price</th><th>Description</th><th colspan="2" style="text-align:center;">Actions</th></tr>'
+            productList.append(thead);
+              for (var i = 0; i < data.length; i++) {
+                var product = data[i];
+                var row =  '<tr><td>' + product.name + '</td><td>' + product.price + '</td><td>' + product.description + 
+                '</td><td><button id="updatebtn"  data-product-id="' + product.id + '">Update</button></td><td><button id="deletebtn" data-product-id="' + product.id + '">Delete</button></td></tr>';
+                productList.append(row);
+
+                }
+            }
+          });
+        }
+
+       $(document).ready(function() {
+                  $("#product-table").on('click','#deletebtn', function() {
+                      var productId = $(this).data('product-id');
+                      mydata={productId:productId}
+                              $.ajax({
+                                url: "{%url 'delete_product' %}",
+                                type: "POST",
+                                data: mydata,  
+                                beforeSend: function(xhr) {
+                                  xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+                                },  
+                                success:function(data){
+                                  if(data.status==1){
+                                    console.log("Data deleted successfully")
+                                    getProductList();
+                                  }
+                                  if(data.status==0){
+                                    console.log("Unable to delete data")
+                                  }
+                                } 
+                              });    
+                  });
+                });
+
+  function getCookie(name) {
+                  var cookieValue = null;
+                  if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                      var cookie = jQuery.trim(cookies[i]);
+                      // Does this cookie string begin with the name we want?
+                      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                      }
+                    }
+                  }
+                  return cookieValue;
+                }
+
+       </script>
+     </head>
+    <body class="mt-5" >
+        <div class="container-fluid">
+          <div class="row">
+                <div class="col-6 ">
+                  <h1>AJAX CRUD</h1> 
+                  <button id="createbtn" ><b>Create</b></button>
+                  <table id="product-table" border="2" >
+                  </table>
+                </div>
+            <div class="col-6" id="content-box">
+               <form id="create-form"  action="" method="post">
+                </form> 
+              <form id="update-form"  action="" method="post">
+              </form> 
+            </div>
+          </div>
+        </div>
+    </body>

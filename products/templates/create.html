@@ -1,0 +1,74 @@
+{% extends 'layout/applayout.html' %}
+
+{% block 'content' %}
+    <div class="create-product-container">
+        <h1>Create Product</h1>
+        <form action='' method='post' class="create-product-form">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Submit" class="form-submit">
+        </form>
+    </div>
+
+    <style>
+        .create-product-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-product-container h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .create-product-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .create-product-form .form-field {
+            margin-bottom: 15px;
+        }
+
+        .create-product-form label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .create-product-form input[type="text"],
+        .create-product-form input[type="email"],
+        .create-product-form input[type="number"],
+        .create-product-form textarea,
+        .create-product-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .create-product-form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .create-product-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}

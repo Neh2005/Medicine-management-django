@@ -1,0 +1,117 @@
+<!-- navbar.html -->
+<style>
+    /* Basic Styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+
+    nav .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        display: block;
+        transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: yellow;
+        color: #333;
+    }
+
+    /* Responsive Navbar */
+    .navbar-toggler {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        color: white;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .navbar-toggler {
+            display: block;
+        }
+
+        .navbar-nav {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar-nav.active {
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 5px 0;
+        }
+    }
+</style>
+
+<nav>
+    <div class="container">
+        <a href="{% url 'home' %}" class="navbar-brand">Medico</a>
+        <button class="navbar-toggler">&#9776</button>
+        <ul class="navbar-nav">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="{% url 'contact-us-form' %}">Contact Us Form</a></li>
+            <li><a href="{% url 'createproduct' %}">Create Product</a></li>
+            <li><a href="{% url 'retrieveproduct' %}">Retrieve Product</a></li>
+            <li><a href="{% url 'page_list' %}">Listing Product</a></li>
+            <li><a href="{% url 'page_visit' %}">Page Visit</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'signup' %}">Signup</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<script>
+    // Toggle button functionality
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+        document.querySelector('.navbar-nav').classList.toggle('active');
+    });
+</script>
