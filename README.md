@@ -27,7 +27,7 @@ To set up and run this project locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/medicine-management-website.git
+   git clone https://github.com/Neh2005/medicine-management-website.git
    cd medicine-management-website
    
 2. **Create and activate a virtual environment**:
