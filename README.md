@@ -34,7 +34,14 @@ To set up and run this project locally:
    ```bash
    python3 -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-3. ### Install Dependencies
-
-```bash
-pip install -r requirements.txt
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+4. **Run Database Migrations**
+   ```bash
+   python manage.py migrate
+5. **Start the Development Server**
+   ```bash
+   python manage.py runserver
+6. **Access the Website**
+   Open your browser and go to http://127.0.0.1:8000/.
