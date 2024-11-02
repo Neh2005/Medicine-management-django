@@ -46,16 +46,19 @@ To set up and run this project locally:
 6. **Access the Website**
    
    Open your browser and go to http://127.0.0.1:8000/.
-### Project Structure 📂
 
-```plaintext
-medicine-management-website/
-├── manage.py
-├── requirements.txt
-├── db.sqlite3
-├── app/                   # Django app for patient and medicine management
-│   ├── migrations/
-│   ├── templates/
-│   ├── static/
-│   └── views.py
-└── users/                 # Django app for user authentication
+### Database Management
+
+This project uses **phpMyAdmin** for database management with **MySQL**. Make sure to configure the database connection in your Django settings.
+
+---
+
+### Usage 👥
+
+- **User Login**: Register and log in to access your account.
+- **Patient Management**: Add patients and store their details.
+- **Medicine Management**:
+  - Add new medications with dosage and schedule information.
+  - Update or delete records as needed.
+
+
