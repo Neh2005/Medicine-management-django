@@ -44,4 +44,18 @@ To set up and run this project locally:
    ```bash
    python manage.py runserver
 6. **Access the Website**
+   
    Open your browser and go to http://127.0.0.1:8000/.
+### Project Structure 📂
+
+```plaintext
+medicine-management-website/
+├── manage.py
+├── requirements.txt
+├── db.sqlite3
+├── app/                   # Django app for patient and medicine management
+│   ├── migrations/
+│   ├── templates/
+│   ├── static/
+│   └── views.py
+└── users/                 # Django app for user authentication
