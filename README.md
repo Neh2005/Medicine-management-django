@@ -24,8 +24,14 @@ A comprehensive web application designed to help users manage patient informatio
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
+## 🚀 Getting Started
 
-## Installation and Setup ⚙️
+### Prerequisites
+- Python 3
+- Django and Django REST Framework installed
+
+
+### Installation and Setup ⚙️
 
 To set up and run this project locally:
 
