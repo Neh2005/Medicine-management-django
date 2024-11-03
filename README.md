@@ -37,7 +37,7 @@ To set up and run this project locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Neh2005/medicine-management-website.git
+   git clone https://github.com/Neh2005/Medicine-management-django.git
    cd medicine-management-website
    
 2. **Create and activate a virtual environment**:
@@ -62,6 +62,18 @@ To set up and run this project locally:
 This project uses **phpMyAdmin** for database management with **MySQL**. Make sure to configure the database connection in your Django settings.
 
 ---
+
+### API Endpoints
+
+- `/api/auth/`: Authentication endpoints for registration and login
+- `/api/medicines/`: Endpoints to add, edit, delete, and update medicine details
+- `/api/patients/`: Endpoints to manage patient records
+
+## 📚 Key Features
+
+- **User Authentication**: Only registered users can access the system.
+- **Full CRUD Operations**: Perform all CRUD operations on medicines and patient records.
+- **Secure Data Access**: User data is protected, and each user can only access their own records.
 
 ### Usage 👥
 
